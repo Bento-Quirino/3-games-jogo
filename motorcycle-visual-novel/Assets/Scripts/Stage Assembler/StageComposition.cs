@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "New Stage Composition",
 	menuName = "Scriptable Objects/Stage Composition")]
@@ -10,17 +9,17 @@ using UnityEngine.UI;
 /// </summary>
 public class StageComposition : ScriptableObject
 {
-	public Image background { get { return _background; } }
-	[SerializeField] Image _background;
+	public Sprite background { get { return _background; } }
+	[SerializeField] Sprite _background;
 
-	public Image leftCharacter { get { return _leftCharacter; } }
-	[SerializeField] Image _leftCharacter;
+	public Sprite leftCharacter { get { return _leftCharacter; } }
+	[SerializeField] Sprite _leftCharacter;
 
-	public Image rightCharacter { get { return _rightCharacter; } }
-	[SerializeField] Image _rightCharacter;
+	public Sprite rightCharacter { get { return _rightCharacter; } }
+	[SerializeField] Sprite _rightCharacter;
 
-	public Image dialogueBox { get { return _dialogueBox; } }
-	[SerializeField] Image _dialogueBox;
+	public Sprite dialogueBox { get { return _dialogueBox; } }
+	[SerializeField] Sprite _dialogueBox;
 
 	public string dialogue { get { return _dialogue; } }
 	[SerializeField] string _dialogue;
