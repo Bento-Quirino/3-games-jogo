@@ -13,18 +13,26 @@ public class StageUpdate : AbstractState
 	{
 		yield return null;
 		pause = false;
+		StartCoroutine(FadeOut());
 	}
 
 	public void Update()
 	{
 		if(pause) { return; }
 
-		eventManager.FrameUpdate();
+		eventManager.Process();
 	}
 
 	public override IEnumerator OnExitIntervaled()
 	{
 		pause = true;
+		yield return null;
+	}
+
+	IEnumerator FadeOut()
+	{
+		eventManager.Init();
+		fade.Out();
 		yield return null;
 	}
 }

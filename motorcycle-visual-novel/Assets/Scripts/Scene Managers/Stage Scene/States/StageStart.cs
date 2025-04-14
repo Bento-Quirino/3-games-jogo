@@ -13,10 +13,4 @@ public class StageStart : AbstractState
 		yield return null;
 		machine.ChangeStateCoroutine<StageUpdate>();
 	}
-
-	public override IEnumerator OnExitIntervaled()
-	{
-		fade.Out();
-		yield return new WaitWhile(() => fade.inTransition);
-	}
 }
