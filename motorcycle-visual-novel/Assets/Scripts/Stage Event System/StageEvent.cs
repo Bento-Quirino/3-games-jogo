@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using Utility.EventCommunication;
 
 [CreateAssetMenu(fileName = "New Stage Composition",
 	menuName = "Scriptable Objects/Stage Composition")]
@@ -23,4 +25,11 @@ public class StageEvent : ScriptableObject
 
 	public string dialogue { get { return _dialogue; } }
 	[SerializeField][TextArea] string _dialogue;
+
+	public UnityEvent<string> hubEvent;
+
+	public static void TriggerHub(string eventName)
+	{
+		EventHub.Publish(eventName);
+	}
 }

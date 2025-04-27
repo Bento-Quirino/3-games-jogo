@@ -19,3 +19,6 @@ MonoBehaviour:
   _dialogue: "O incentivo ao avan\xE7o tecnol\xF3gico, assim como a crescente influ\xEAncia
     da m\xEDdia oferece uma interessante oportunidade para verifica\xE7\xE3o das
     formas de a\xE7\xE3o"
+  hubEvent:
+    m_PersistentCalls:
+      m_Calls: []
