@@ -26,10 +26,9 @@ public class StageEvent : ScriptableObject
 	public string dialogue { get { return _dialogue; } }
 	[SerializeField][TextArea] string _dialogue;
 
-	public UnityEvent<string> hubEvent;
-
-	public static void TriggerHub(string eventName)
-	{
-		EventHub.Publish(eventName);
-	}
+	/// <summary>
+	/// Demand a transition, from the loader, before load content
+	/// </summary>
+	public bool transition { get { return _transition; } }
+	[SerializeField] bool _transition;
 }

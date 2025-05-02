@@ -407,6 +407,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 118603765449466682, guid: f65c5c8fbadcd57459e739722f210051, type: 3}
+      propertyPath: initialAlpha
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 152076892266071677, guid: f65c5c8fbadcd57459e739722f210051, type: 3}
+      propertyPath: m_Color.a
+      value: 0.32941177
+      objectReference: {fileID: 0}
     - target: {fileID: 349773550008583604, guid: f65c5c8fbadcd57459e739722f210051, type: 3}
       propertyPath: m_Name
       value: Fade Canvas

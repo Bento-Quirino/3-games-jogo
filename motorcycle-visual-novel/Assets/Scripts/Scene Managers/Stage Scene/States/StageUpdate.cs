@@ -7,13 +7,24 @@ public class StageUpdate : AbstractState
 	[SerializeField] UIFader fade;
 	[SerializeField] EventManager eventManager;
 
+	bool firstEnter;
 	bool pause;
+
+	private void Start()
+	{
+		firstEnter = true;
+	}
 
 	public override IEnumerator OnEnterIntervaled()
 	{
-		yield return null;
+		if (firstEnter)
+		{
+			eventManager.Init(StageTransition, End);
+			firstEnter = false;
+		}
+
+		yield return FadeOut();
 		pause = false;
-		StartCoroutine(FadeOut());
 	}
 
 	public void Update()
@@ -26,13 +37,36 @@ public class StageUpdate : AbstractState
 	public override IEnumerator OnExitIntervaled()
 	{
 		pause = true;
+		yield return FadeIn();
 		yield return null;
+	}
+
+	void StageTransition(float time)
+	{
+		StartCoroutine(Transition(time));
+	}
+
+	IEnumerator Transition(float time)
+	{
+		yield return FadeIn();
+		yield return new WaitForSeconds(time);
+		yield return FadeOut();
+	}
+
+	void End()
+	{
+		//TODO
+	}
+
+	IEnumerator FadeIn()
+	{
+		fade.In();
+		yield return new WaitWhile(() => fade.inTransition);
 	}
 
 	IEnumerator FadeOut()
 	{
-		eventManager.Init();
 		fade.Out();
-		yield return null;
+		yield return new WaitWhile(() => fade.inTransition);
 	}
 }
