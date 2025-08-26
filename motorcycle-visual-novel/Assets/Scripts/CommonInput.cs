@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class CommonInput : MonoBehaviour
 {
+    private void Awake()
+	{
+	    if (SetInstance()) { return; }
+    }
+    
+    public static CommonInput instance { get; private set; } = null;
+    bool SetInstance()
+    {
+        CommonInput[] g = GameObject.FindObjectsOfType<CommonInput>();
+        if (g.Length > 1) { Destroy(gameObject); return false; }
+        instance = this; DontDestroyOnLoad(gameObject); return true;
+    }
+    
     public bool Pause()
     {
         return Input.GetKeyDown(KeyCode.Escape);
@@ -48,7 +61,7 @@ public class CommonInput : MonoBehaviour
         //garante que exista um toque
         if (Input.touchCount > 0)
         {
-            //Pega as informações do primeiro toque
+            //Pega as informaÃ§Ãµes do primeiro toque
             Touch t = Input.GetTouch(0);
             float side = Screen.width / 2;
             //direita
@@ -67,7 +80,7 @@ public class CommonInput : MonoBehaviour
         //garante que exista um toque
         if (Input.touchCount > 0)
         {
-            //Pega as informações do primeiro toque
+            //Pega as informaÃ§Ãµes do primeiro toque
             Touch t = Input.GetTouch(0);
             float side = Screen.width / 2;
             //esquerda
@@ -76,3 +89,4 @@ public class CommonInput : MonoBehaviour
         return pc || mobile;
     }
 }
+
